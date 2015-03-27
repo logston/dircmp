@@ -11,3 +11,6 @@ This program builds a trie out of the SHA1 digests of all the files in a directo
 Paths that correspond to identical file content are grouped with a double line break in between groups.
 
 To see a video demo: http://youtu.be/d1KNQrwsDXg
+
+
+The program is able to compare the contents of a directory containing ~475MB of data in about 10 seconds on an early 2013 Macbook Pro Retina.

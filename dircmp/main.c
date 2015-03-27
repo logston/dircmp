@@ -17,31 +17,24 @@
 int main(int argc, const char* argv[])
 {
     // check for exaclty two arguments
-    if (argc != 3) {
-        printf("Usage: dircmp < dir_path_1 > < dir_path_2 >\n");
+    if (argc != 2) {
+        printf("Usage: dircmp < direcotry path > \n");
         return 1;
     }
     
-    char dir_path_1[MAX_PATH_LENGTH];
-    strcpy(dir_path_1, argv[1]);
-    char dir_path_2[MAX_PATH_LENGTH];
-    strcpy(dir_path_2, argv[2]);
+    char dir_path[MAX_PATH_LENGTH];
+    strcpy(dir_path, argv[1]);
     
     // check to make sure each argument is a dir
-    if (!(get_file_type(dir_path_1) == 1) || !(get_file_type(dir_path_2))) {
-        printf("Error: dircmp currently only supports the comparison of two directories. Check back later!\n");
+    if (!get_file_type(dir_path)) {
+        printf("Error: dircmp currently only supports the comparison of directories. Check back later!\n");
         return 1;
     }
-    
     
     // build trie out of first directory
     trie_node* trie_1_root = NULL;
-    build_trie(dir_path_1, &trie_1_root);
-    
-    // add in files from second directory
-    build_trie(dir_path_2, &trie_1_root);
-    
-    
+    build_trie(dir_path, &trie_1_root);
+
     print_results(trie_1_root);
     
     // free trie
